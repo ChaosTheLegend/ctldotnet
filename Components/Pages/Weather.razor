@@ -42,26 +42,52 @@ else
     private WeatherForecast[]? forecasts;
 
     protected override async Task OnInitializedAsync()
-    {
-        // Simulate asynchronous loading to demonstrate streaming rendering
-        await Task.Delay(500);
+{
+    var httpClient = new HttpClient();
+    var apiKey = "YOUR_API_KEY"; // Replace with your OpenWeather API key
+    var city = "London"; // Replace with the desired city
+    var url = $"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={apiKey}&units=metric";
 
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+    var response = await httpClient.GetFromJsonAsync<WeatherApiResponse>(url);
+    if (response != null)
+    {
+        forecasts = response.List.Select(f => new WeatherForecast
         {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
+            Date = DateOnly.FromDateTime(DateTimeOffset.FromUnixTimeSeconds(f.Dt).DateTime),
+            TemperatureC = (int)f.Main.Temp,
+            Summary = f.Weather.FirstOrDefault()?.Description
         }).ToArray();
     }
+}
 
-    private class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
+private class WeatherForecast
+{
+    public DateOnly Date { get; set; }
+    public int TemperatureC { get; set; }
+    public string? Summary { get; set; }
+    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+}
+
+private class WeatherApiResponse
+{
+    public List<WeatherData> List { get; set; }
+}
+
+private class WeatherData
+{
+    public long Dt { get; set; }
+    public MainData Main { get; set; }
+    public List<WeatherDescription> Weather { get; set; }
+}
+
+private class MainData
+{
+    public double Temp { get; set; }
+}
+
+private class WeatherDescription
+{
+    public string Description { get; set; }
+}
 
 }

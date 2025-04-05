@@ -1,0 +1,22 @@
+﻿/* canvas fill in full page and have a purple - black gradient background */
+
+/*remove all padding and margin from the body*/
+
+.body {
+    margin: 0;
+    padding: 0;
+    background-color: #000428;
+    color: #fff;
+}
+
+.content-canvas{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, #000428, #004e92);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0;
+    padding: 0;
+}

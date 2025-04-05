@@ -2,6 +2,10 @@
 
 .top-row {
     padding: 0.5rem 1rem;
-    background-color: var(--bs-primary);
+    background-color: var(--bs-gray-dark);
     color: var(--bs-light);
+}
+
+.content{
+    padding: 0;
 }

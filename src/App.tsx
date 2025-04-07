@@ -1,12 +1,12 @@
 import Navbar from "./components/Navbar.tsx";
-import Hero from "./components/Hero.tsx";
+import MainPage from "./components/MainPage.tsx";
 
 const App = () => {
 
   return(
     <div>
-      <Navbar/>
-        <Hero/>
+        <MainPage/>
+        <Navbar/>
     </div>
   )
 }

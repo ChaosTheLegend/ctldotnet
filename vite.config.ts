@@ -7,6 +7,8 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss()],
+    base: '/ctldotnet/', // Replace 'your-repo-name' with your GitHub repo name
+
     server: {
         port: 3000,
         open: true,

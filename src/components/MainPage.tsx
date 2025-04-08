@@ -59,6 +59,25 @@ const InteractiveSpaceship = () => {
     );
 }
 
+const CTLlogo = () => {
+    // Path to your spaceship model
+    const path = './models/ctl.glb'; // Adjust the path if needed
+    const gltf = useGLTF(path); // Adjust the path if needed
+
+
+    return (
+        <>
+            <primitive
+                object={gltf.scene}
+                material={new THREE.MeshBasicMaterial({color: 0x00ff00})}
+                scale={1} // Scale the model to match your scene
+                rotation={[0, -0.5, 0]} // Adjust the rotation of the model
+                position={[-1,0,-20]} // Adjust the position of the model
+            />
+        </>
+    );
+};
+
 const MainPage = () => {
     const cameraPosition = {x: -6.70, y: 2.49, z: 4.72};
     const cameraRotation = {x: -0.34, y: -0.69, z: -0.22};
@@ -74,12 +93,12 @@ const MainPage = () => {
                 />
                 <OrbitControls/>
                 {/* Add ambient light */}
-                <ambientLight intensity={0.5}/>
+                <ambientLight intensity={1.8}/>
                 {/* Add directional light */}
                 <directionalLight position={[10, 10, 10]} intensity={1.5}/>
                 {/* Spaceship Model */}
                 <InteractiveSpaceship/>
-
+                <CTLlogo/>
                 <Particles particleCount={3000}
                            particleSpeed={{x: 0, y: 0, z: 0.005}}
                            particleCenterPosition={{x: 0, y: 0, z: -20}}

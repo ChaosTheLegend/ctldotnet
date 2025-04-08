@@ -24,15 +24,16 @@ export const Particles = ({
         );
 
         return geometry;
-    }, [particleCount, particleCenterPosition, particleSpread]);
+    }, [particleCount, particleSpread]);
 
     const particlesMaterial = React.useMemo(() => {
         return new THREE.PointsMaterial({
             color: color, // Fire color
             size: 0.05, // Adjust particle size
         });
-    }, []);
+    }, [color]);
 
+    
     React.useEffect(() => {
         const positions = particlesGeometry.attributes.position.array;
 

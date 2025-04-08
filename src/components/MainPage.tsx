@@ -9,7 +9,7 @@ import {Particles} from "./utils/Particles.tsx"; // Adjust the path if needed
 
 const Spaceship = ({shipPosition = {x: 0, y: 0, z: 0}}) => {
     // Path to your spaceship model
-    const path = '/models/cargo_spaceship.glb'; // Adjust the path if needed
+    const path = './models/cargo_spaceship.glb'; // Adjust the path if needed
     const gltf = useGLTF(path); // Adjust the path if needed
 
     const particleOffset = [

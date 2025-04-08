@@ -1,4 +1,7 @@
 
+#[Yeah who cares about readme just look at the website](https://chaosthelegend.github.io/ctldotnet/)
+
+
 # Personal Portfolio Website
 
 (Actually, don't read this, readme is generated with AI anyway)

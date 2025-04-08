@@ -1,5 +1,5 @@
 
-#[Yeah who cares about readme just look at the website](https://chaosthelegend.github.io/ctldotnet/)
+[Yeah who cares about readme just look at the website](https://chaosthelegend.github.io/ctldotnet/)
 
 
 # Personal Portfolio Website
